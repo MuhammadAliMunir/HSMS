@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Plot;
 
-class plotController extends Controller
+class PlotController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,8 @@ class plotController extends Controller
      */
     public function index()
     {
-        return view('plot.plot');
+        $plots = Plot::all();
+        return view('plot.plot',['plots'=>$plots]);
         //
     }
 
@@ -34,25 +35,18 @@ class plotController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function addplot(Request $request)
     {
+        // dd($request->all());exit;
+
+        $plots = new Plot;
+        $plots->numbar = $request->get('number');
+        $plots->status = $request->get('status');
+        $plots->street = $request->get('street');
+        $plots->block = $request->get('block');
+        $plots->save();
+        \dd($plots);exit;
         // echo "testing";exit;
-        var_dump($request);exit;
-        $request->validate([
-            'numbar'=>'required',
-            'status'=>'required',
-            'street'=>'required',
-            'block'=>'required'
-        ]);
-        echo "testing";exit;
-        $plot = new Plot([
-            'number' => $request->get('number'),
-            'status' => $request->get('status'),
-            'street' => $request->get('street'),
-            'block' => $request->get('block'),
-        ]);
-        $plot->save();
-        echo "testing";exit;
         // return redirect('/addPlot')->with('success', 'Plot added succefully!');
         //
     }
@@ -66,6 +60,7 @@ class plotController extends Controller
     public function show()
     {
         //
+
         return view('plot.plottransfer');
     }
 
@@ -79,7 +74,12 @@ class plotController extends Controller
     {
         //
     }
-
+    public function showPlots()
+    {
+        $data= Plot::find(2);
+        echo "<pre>";
+        print_r($data->street);
+    }
     /**
      * Update the specified resource in storage.
      *

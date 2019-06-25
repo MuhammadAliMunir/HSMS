@@ -11,26 +11,37 @@
                 <tr>
                     <th>Id</th>
                     <th>Plot Number</th>
-                    <th>Area</th>
-                    <th>Location</th>
-                    <th>Details</th>
+                    <th>Street</th>
+                    <th>Block</th>
+                    <th>Status</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                @foreach($plots as $key => $data)
+                    <tr>
+                      <td>{{$data->id}}</td>
+                      <td>{{$data->numbar}}</td>
+                      <td>{{$data->street}}</td>
+                      <td>{{$data->block}}</td>
+                      <td>{{$data->status}}</td>
+                      <td><a href="{{url('plotBooking/')}}" class="btn btn-primary">Booking/Transfer</a></td>
+                    </tr>
+                @endforeach
+                {{-- <tr>
                     <td>Row 1 Data 1</td>
                     <td>Row 1 Data 2</td>
                     <td>Row 1 Data 2</td>
                     <td>Row 1 Data 2</td>
                     <td><a href="{{url('plotBooking')}}" class="btn btn-primary">Booking/Transfer</a></td>
-                </tr>
-                <tr>
+                </tr> --}}
+                {{-- <tr>
                     <td>Row 2 Data 1</td>
                     <td>Row 2 Data 2</td>
                     <td>Row 2 Data 3</td>
                     <td>Row 1 Data 2</td>
                     <td><a href="{{url('plotTransfer')}}" class="btn btn-primary">Booking/Transfer</a></td>
-                </tr>
+                </tr> --}}
             </tbody>
         </table>
     </div>

@@ -15,7 +15,8 @@ Route::get('/', function () {
 });
 Route::resource('plots', "plotController");
 Route::get('/addPlot', "plotController@create");
-Route::get('/plot/store', "plotController@store");
+Route::post('/plot/addplot', "plotController@addplot");
+Route::get('/plot/getplot', "plotController@showPlots");
 Route::get('plotTransfer', "plotController@show");
 Route::get('plotBooking', "plotController@show");
 
@@ -24,7 +25,7 @@ Route::resource('coustomers', "customerController");
 
 Route::resource('files', "fileController");
 Route::get('addFile', "fileController@create");
-Route::resource('filesTransfer', "fileController");
+Route::get('fileTransfer', "fileController@transfer");
 
 // Route::resource('/plot/creates', "plotController@store");
 // Route::resource('/plot/data', "plotController@allfiles");

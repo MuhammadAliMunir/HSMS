@@ -84,4 +84,8 @@ class fileController extends Controller
     {
         //
     }
+    public function transfer()
+    {
+        return view('file.filetransfer');
+    }
 }

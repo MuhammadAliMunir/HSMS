@@ -6,7 +6,9 @@
             Add Plot
         </div>
         <div class="card-body">
-        <form mathod = "post" action = "{{url('plot/store')}}" data-parsley-validate="" novalidate="">
+        <form  action = "{{url('plot/addplot')}}" method = "POST" data-parsley-validate="" novalidate="">
+
+            <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
             <div class="form-group row">
                 <label class="col-12 col-sm-3 col-form-label text-sm-right">Plot Number</label>
                 <div class="col-12 col-sm-8 col-lg-6">
